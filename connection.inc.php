@@ -2,7 +2,8 @@
 session_start();
 $con=mysqli_connect("localhost","root","","store");
 define('SERVER_PATH',$_SERVER['DOCUMENT_ROOT'].'/admin/');
-define('SITE_PATH','http://127.0.0.1/admin/');
+// define('SITE_PATH', 'http://127.0.0.1/admin/');
+define('SITE_PATH', 'http://localhost/redirect_ecom/');
 
 define('INSTAMOJO_REDIRECT',SITE_PATH.'payment_complete.php');
 
@@ -25,5 +26,3 @@ define('SMTP_PASSWORD','Test@123');
 
 
 define('SMS_KEY','sms_key');
-
-?>
