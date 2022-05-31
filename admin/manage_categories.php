@@ -39,7 +39,8 @@ if(isset($_POST['submit'])){
 		}else{
 			mysqli_query($con,"insert into categories(categories,status) values('$categories','1')");
 		}
-		header('location:categories.php');
+
+ 				 header('location:categories.php');
 		die();
 	}
 }
@@ -70,4 +71,5 @@ if(isset($_POST['submit'])){
          
 <?php
 require('footer.inc.php');
+
 ?>

@@ -1,4 +1,6 @@
 <?php
+ob_start();
+
 require('connection.inc.php');
 require('functions.inc.php');
 if(isset($_SESSION['ADMIN_LOGIN']) && $_SESSION['ADMIN_LOGIN']!=''){
@@ -84,7 +86,7 @@ if(isset($_SESSION['ADMIN_LOGIN']) && $_SESSION['ADMIN_LOGIN']!=''){
                      <a href="extlink.php" > External buy orders</a>
                   </li>
 				   
-				  <?php } ?>
+				  <?php ob_flush(); } ?>
                </ul>
             </div>
          </nav>
