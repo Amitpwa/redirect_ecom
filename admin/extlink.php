@@ -10,7 +10,12 @@ if(isset($_GET['type']) && $_GET['type']!=''){
 	}
 }
 
-$sql="select * from ext_click order by id desc";
+// $sql="select * from ext_click order by id desc";
+
+// $sql="select users.name,users.email,product_review.id,product_review.rating,product_review.review,product_review.added_on,product_review.status,product.name as pname from users,product_review,product where product_review.user_id=users.id and product_review.product_id=product.id  order by product_review.added_on desc";
+
+
+
 $res=mysqli_query($con,$sql);
 ?>
 <div class="content pb-0">
