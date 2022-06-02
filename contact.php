@@ -25,7 +25,10 @@ require('top.php');
                 <div class="row">
                     <div class="col-lg-7 col-md-6 col-sm-12 col-xs-12">
                         <div class="map-contacts--2">
-                            <div id="googleMap"></div>
+                        <div>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3611.0434515256907!2d75.89743431495424!3d25.16801063390971!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396f8f0391702fad%3A0x299d374a43545665!2sAashirvad%20bhawan!5e0!3m2!1sen!2sin!4v1654194809698!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+                            <!-- <div id="googleMap"></div> -->
                         </div>
                     </div>
                     <div class="col-lg-5 col-md-6 col-sm-12 col-xs-12">
@@ -96,7 +99,8 @@ require('top.php');
         </section>
         <!-- End Contact Area -->
 		<!-- Google Map js -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmGmeot5jcjdaJTvfCmQPfzeoG_pABeWo "></script>
+
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmGmeot5jcjdaJTvfCmQPfzeoG_pABeWo "></script>
     <script src="js/contact-map.js"></script>
     <script>
         // When the window has finished loading create our google map below
@@ -302,5 +306,5 @@ require('top.php');
 
             });
         }
-    </script>
+    </script> -->
 <?php require('footer.php')?>        

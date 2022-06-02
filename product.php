@@ -246,7 +246,7 @@ $product_review_res = mysqli_query($con, "select users.name,product_review.id,pr
 							$redirect_link = $get_product["0"]["link"];
 
 							?>
-							<button class="fr__btn buy_now" onClick='handelBuyandRedirect("<?= $user_id ?>","<?= $prod_id ?>","<?= $redirect_link ?>")'>Buy now</button>
+							<button class="fr__btn buy_now" target="blank" onClick='handelBuyandRedirect("<?= $user_id ?>","<?= $prod_id ?>","<?= $redirect_link ?>")'>Buy now</button>
 
 
 
@@ -416,7 +416,7 @@ if (isset($_COOKIE['recently_viewed'])) {
 									<div class="category">
 										<div class="ht__cat__thumb">
 											<a href="product.php?id=<?php echo $list['id'] ?>">
-												<img src="<?php echo PRODUCT_IMAGE_SITE_PATH . $list['image'] ?>" alt="product images">
+												<img src="<?php echo PRODUCT_IMAGE_SITE_PATH . $list['image'] ?>" alt="product images"style="height: 160px;width: max-content;">
 											</a>
 										</div>
 										<div class="fr__hover__info">

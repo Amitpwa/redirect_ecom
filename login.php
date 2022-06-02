@@ -18,7 +18,7 @@ if(isset($_SESSION['USER_LOGIN']) && $_SESSION['USER_LOGIN']=='yes'){
                                 <nav class="bradcaump-inner">
                                   <a class="breadcrumb-item" href="index.php">Home</a>
                                   <span class="brd-separetor"><i class="zmdi zmdi-chevron-right"></i></span>
-                                  <span class="breadcrumb-item active">Login/Register</span>
+                                  <span class="breadcrumb-item active">Login/Register <br> (लॉग इन/पंजीकरण) </span>
                                 </nav>
                             </div>
                         </div>
@@ -228,7 +228,7 @@ if(isset($_SESSION['USER_LOGIN']) && $_SESSION['USER_LOGIN']=='yes'){
 					}
 				});
 			}
-		}
+		} 
 		function mobile_verify_otp(){
 			jQuery('#mobile_error').html('');
 			var mobile_otp=jQuery('#mobile_otp').val();

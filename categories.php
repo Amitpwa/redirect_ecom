@@ -138,5 +138,5 @@ if($cat_id>0){
         <!-- End Banner Area -->
 		<input type="hidden" id="qty" value="1"/>
 <?php require('footer.php')
-ob_flush();
+
 ?>        

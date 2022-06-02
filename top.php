@@ -218,7 +218,8 @@ if($mypage=='product.php'){
 											</nav>
 											<?php
 										}else{
-											echo '<a href="login.php" class="mr15">Login/Register</a>';
+											echo '<a href="login.php" class="mr15">Login/Register <br> (लॉग इन/पंजीकरण)</a>';
+										
 										}
 										?>
 									

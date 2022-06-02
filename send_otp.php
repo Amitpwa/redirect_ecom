@@ -89,7 +89,7 @@ if($type=='mobile'){
 	  CURLOPT_CUSTOMREQUEST => "POST",
 	  CURLOPT_POSTFIELDS => json_encode($fields),
 	  CURLOPT_HTTPHEADER => array(
-		"authorization: iaP8WoAhwY32kV16XDOZqy9cNpmUdfxBJnzbHFI0ruSMGj7evK9sejf30li8naJtHvO6pCUKLQXqzdcY",
+		"authorization: GbwcguPdv9X8eZUXyp8JzS7KFdKqajux4XDTdUwL3LeKbZ1aP1wvoNR19nmB",
 		"accept: */*",
 		"cache-control: no-cache",
 		"content-type: application/json"
@@ -104,7 +104,8 @@ if($type=='mobile'){
 	if ($err) {
 	  //echo "cURL Error #:" . $err;
 	} else {
-	  echo "done";
+	// echo  "done";
+	echo $response;
 	}
 	//echo "done";
 }
