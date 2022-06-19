@@ -35,7 +35,7 @@ if(isset($_SESSION['ADMIN_LOGIN']) && $_SESSION['ADMIN_LOGIN']!=''){
                <ul class="nav navbar-nav">
                   <li class="menu-title">Menu</li>
                   
-				  <!-- <li class="menu-item-has-children dropdown">
+				  <li class="menu-item-has-children dropdown">
                      <a href="product.php" > Product Master</a>
                   </li>
 				  <li class="menu-item-has-children dropdown">
@@ -48,7 +48,7 @@ if(isset($_SESSION['ADMIN_LOGIN']) && $_SESSION['ADMIN_LOGIN']!=''){
 					 ?>
 					 
 					 
-                  </li> -->
+                  </li>
 				  <?php if($_SESSION['ADMIN_ROLE']!=1){?>
 				  <li class="menu-item-has-children dropdown">
                      <a href="product_review.php" > Product Review</a>
