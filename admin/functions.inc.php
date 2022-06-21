@@ -246,3 +246,4 @@ function imageCompress($source,$path,$quality=60){
 	imagejpeg($i,$path,$quality);
 }
 ?>
+

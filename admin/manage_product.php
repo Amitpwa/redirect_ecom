@@ -14,7 +14,6 @@ $price='';
 $qty='';*/
 $image='';
 $short_desc	='';
-$link	='';
 $description	='';
 $meta_title	='';
 $meta_desc	='';
@@ -54,7 +53,6 @@ if(isset($_GET['id']) && $_GET['id']!=''){
 		$price=$row['price'];
 		$qty=$row['qty'];*/
 		$short_desc=$row['short_desc'];
-		$link=$row['link'];
 		$description=$row['description'];
 		$meta_title=$row['meta_title'];
 		$meta_desc=$row['meta_desc'];
@@ -100,7 +98,6 @@ if(isset($_POST['submit'])){
 	$price=get_safe_value($con,$_POST['price']);
 	$qty=get_safe_value($con,$_POST['qty']);*/
 	$short_desc=get_safe_value($con,$_POST['short_desc']);
-	$link=get_safe_value($con,$_POST['link']);
 	$description=get_safe_value($con,$_POST['description']);
 	$meta_title=get_safe_value($con,$_POST['meta_title']);
 	$meta_desc=get_safe_value($con,$_POST['meta_desc']);
@@ -150,16 +147,16 @@ if(isset($_POST['submit'])){
 				$image=rand(111111111,999999999).'_'.$_FILES['image']['name'];
 				move_uploaded_file($_FILES['image']['tmp_name'],PRODUCT_IMAGE_SERVER_PATH.$image);
 				imageCompress($_FILES['image']['tmp_name'],PRODUCT_IMAGE_SERVER_PATH.$image);
-				$update_sql="update product set categories_id='$categories_id',name='$name',short_desc='$short_desc',link='$link',description='$description',meta_title='$meta_title',meta_desc='$meta_desc',meta_keyword='$meta_keyword',image='$image',best_seller='$best_seller',sub_categories_id='$sub_categories_id' where id='$id'";
+				$update_sql="update product set categories_id='$categories_id',name='$name',short_desc='$short_desc',description='$description',meta_title='$meta_title',meta_desc='$meta_desc',meta_keyword='$meta_keyword',image='$image',best_seller='$best_seller',sub_categories_id='$sub_categories_id' where id='$id'";
 			}else{
-				$update_sql="update product set categories_id='$categories_id',name='$name',short_desc='$short_desc',link='$link',description='$description',meta_title='$meta_title',meta_desc='$meta_desc',meta_keyword='$meta_keyword',best_seller='$best_seller',sub_categories_id='$sub_categories_id' where id='$id'";
+				$update_sql="update product set categories_id='$categories_id',name='$name',short_desc='$short_desc',description='$description',meta_title='$meta_title',meta_desc='$meta_desc',meta_keyword='$meta_keyword',best_seller='$best_seller',sub_categories_id='$sub_categories_id' where id='$id'";
 			}
 			mysqli_query($con,$update_sql);
 		}else{
 			$image=rand(111111111,999999999).'_'.$_FILES['image']['name'];
 			move_uploaded_file($_FILES['image']['tmp_name'],PRODUCT_IMAGE_SERVER_PATH.$image);
 			imageCompress($_FILES['image']['tmp_name'],PRODUCT_IMAGE_SERVER_PATH.$image);
-			mysqli_query($con,"insert into product(categories_id,name,short_desc,link,description,meta_title,meta_desc,meta_keyword,status,image,best_seller,sub_categories_id,added_by) values('$categories_id','$name','$short_desc',$link,'$description','$meta_title','$meta_desc','$meta_keyword',1,'$image','$best_seller','$sub_categories_id','".$_SESSION['ADMIN_ID']."')");
+			mysqli_query($con,"insert into product(categories_id,name,short_desc,description,meta_title,meta_desc,meta_keyword,status,image,best_seller,sub_categories_id,added_by) values('$categories_id','$name','$short_desc','$description','$meta_title','$meta_desc','$meta_keyword',1,'$image','$best_seller','$sub_categories_id','".$_SESSION['ADMIN_ID']."')");
 			$id=mysqli_insert_id($con);
 		}
 		
@@ -176,7 +173,7 @@ if(isset($_POST['submit'])){
 						mysqli_query($con,"update product_images set product_images='$image' where id='".$_POST['product_images_id'][$key]."'");
 					}else{
 						$image=rand(111111111,999999999).'_'.$_FILES['product_images']['name'][$key];
-						move_uploaded_file($_FILES['product_images']['tmp_name'][$key],PRODUCT_MULTIPLE_IMAGE_SERVER_PATH.$image);
+					move_uploaded_file($_FILES['product_images']['tmp_name'][$key],PRODUCT_MULTIPLE_IMAGE_SERVER_PATH.$image);
 						imageCompress($_FILES['product_images']['tmp_name'][$key],PRODUCT_MULTIPLE_IMAGE_SERVER_PATH.$image);
 						mysqli_query($con,"insert into product_images(product_id,product_images) values('$id','$image')");
 					}
@@ -399,11 +396,6 @@ foreach($multipleImageArr as $list){
 								<div class="form-group">
 									<label for="categories" class=" form-control-label">Short Description</label>
 									<textarea name="short_desc" placeholder="Enter product short description" class="form-control" required><?php echo $short_desc?></textarea>
-								</div>
-
-								<div class="form-group">
-									<label for="categories" class=" form-control-label">Product purchase link</label>
-									<textarea name="link" placeholder="Enter product external link" class="form-control" required><?php echo $link?></textarea>
 								</div>
 								
 								<div class="form-group">

@@ -1,10 +1,10 @@
 <?php
 session_start();
 $con=mysqli_connect("localhost","root","","store");
-define('SERVER_PATH',$_SERVER['DOCUMENT_ROOT'].'/admin/');
-// define('SITE_PATH', 'http://127.0.0.1/admin/');
+define('SERVER_PATH',$_SERVER['DOCUMENT_ROOT'].'/redirect_ecom/');
+// define('SITE_PATH','http://127.0.0.1/admin/');
 define('SITE_PATH', 'http://localhost/redirect_ecom/');
-
+ 
 define('INSTAMOJO_REDIRECT',SITE_PATH.'payment_complete.php');
 
 define('PRODUCT_IMAGE_SERVER_PATH',SERVER_PATH.'media/product/');
