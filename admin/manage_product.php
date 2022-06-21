@@ -9,9 +9,9 @@ if($_SESSION['ADMIN_ROLE']==1){
 }
 $categories_id='';
 $name='';
-/*$mrp='';
+$mrp='';
 $price='';
-$qty='';*/
+$qty='';
 $image='';
 $short_desc	='';
 $description	='';
@@ -49,9 +49,9 @@ if(isset($_GET['id']) && $_GET['id']!=''){
 		$categories_id=$row['categories_id'];
 		$sub_categories_id=$row['sub_categories_id'];
 		$name=$row['name'];
-		/*$mrp=$row['mrp'];
+		$mrp=$row['mrp'];
 		$price=$row['price'];
-		$qty=$row['qty'];*/
+		$qty=$row['qty'];
 		$short_desc=$row['short_desc'];
 		$description=$row['description'];
 		$meta_title=$row['meta_title'];
@@ -146,17 +146,17 @@ if(isset($_POST['submit'])){
 			if($_FILES['image']['name']!=''){
 				$image=rand(111111111,999999999).'_'.$_FILES['image']['name'];
 				move_uploaded_file($_FILES['image']['tmp_name'],PRODUCT_IMAGE_SERVER_PATH.$image);
-				imageCompress($_FILES['image']['tmp_name'],PRODUCT_IMAGE_SERVER_PATH.$image);
-				$update_sql="update product set categories_id='$categories_id',name='$name',short_desc='$short_desc',description='$description',meta_title='$meta_title',meta_desc='$meta_desc',meta_keyword='$meta_keyword',image='$image',best_seller='$best_seller',sub_categories_id='$sub_categories_id' where id='$id'";
+			//	imageCompress($_FILES['image']['tmp_name'],PRODUCT_IMAGE_SERVER_PATH.$image);
+				$update_sql="update product set categories_id='$categories_id',name='$name',short_desc='$short_desc',description='$description',meta_title='$meta_title',meta_desc='$meta_desc',meta_keyword='$meta_keyword',image='$image',best_seller='$best_seller',sub_categories_id='$sub_categories_id' ,mrp='$mrp',price='$price',qty='$qty, where id='$id'";
 			}else{
-				$update_sql="update product set categories_id='$categories_id',name='$name',short_desc='$short_desc',description='$description',meta_title='$meta_title',meta_desc='$meta_desc',meta_keyword='$meta_keyword',best_seller='$best_seller',sub_categories_id='$sub_categories_id' where id='$id'";
+				$update_sql="update product set categories_id='$categories_id',name='$name',short_desc='$short_desc',description='$description',meta_title='$meta_title',meta_desc='$meta_desc',meta_keyword='$meta_keyword',best_seller='$best_seller',sub_categories_id='$sub_categories_id', mrp='$mrp',price='$price',qty='$qty, where id='$id'";
 			}
 			mysqli_query($con,$update_sql);
 		}else{
 			$image=rand(111111111,999999999).'_'.$_FILES['image']['name'];
 			move_uploaded_file($_FILES['image']['tmp_name'],PRODUCT_IMAGE_SERVER_PATH.$image);
-			imageCompress($_FILES['image']['tmp_name'],PRODUCT_IMAGE_SERVER_PATH.$image);
-			mysqli_query($con,"insert into product(categories_id,name,short_desc,description,meta_title,meta_desc,meta_keyword,status,image,best_seller,sub_categories_id,added_by) values('$categories_id','$name','$short_desc','$description','$meta_title','$meta_desc','$meta_keyword',1,'$image','$best_seller','$sub_categories_id','".$_SESSION['ADMIN_ID']."')");
+		//	imageCompress($_FILES['image']['tmp_name'],PRODUCT_IMAGE_SERVER_PATH.$image);
+			mysqli_query($con,"insert into product(categories_id,name,short_desc,description,meta_title,meta_desc,meta_keyword,status,image,best_seller,sub_categories_id,added_by,mrp,qty,price) values('$categories_id','$name','$short_desc','$description','$meta_title','$meta_desc','$meta_keyword',1,'$image','$best_seller','$sub_categories_id','".$_SESSION['ADMIN_ID']."','$mrp','$price','$qty')");
 			$id=mysqli_insert_id($con);
 		}
 		
@@ -169,12 +169,12 @@ if(isset($_POST['submit'])){
 					if(isset($_POST['product_images_id'][$key])){
 						$image=rand(111111111,999999999).'_'.$_FILES['product_images']['name'][$key];
 						move_uploaded_file($_FILES['product_images']['tmp_name'][$key],PRODUCT_MULTIPLE_IMAGE_SERVER_PATH.$image);
-						imageCompress($_FILES['product_images']['tmp_name'][$key],PRODUCT_MULTIPLE_IMAGE_SERVER_PATH.$image);
+					//	imageCompress($_FILES['product_images']['tmp_name'][$key],PRODUCT_MULTIPLE_IMAGE_SERVER_PATH.$image);
 						mysqli_query($con,"update product_images set product_images='$image' where id='".$_POST['product_images_id'][$key]."'");
 					}else{
 						$image=rand(111111111,999999999).'_'.$_FILES['product_images']['name'][$key];
 					move_uploaded_file($_FILES['product_images']['tmp_name'][$key],PRODUCT_MULTIPLE_IMAGE_SERVER_PATH.$image);
-						imageCompress($_FILES['product_images']['tmp_name'][$key],PRODUCT_MULTIPLE_IMAGE_SERVER_PATH.$image);
+					//	imageCompress($_FILES['product_images']['tmp_name'][$key],PRODUCT_MULTIPLE_IMAGE_SERVER_PATH.$image);
 						mysqli_query($con,"insert into product_images(product_id,product_images) values('$id','$image')");
 					}
 				}
@@ -187,7 +187,7 @@ if(isset($_POST['submit'])){
 					if($_FILES['product_images']['name'][$key]!=''){
 						$image=rand(111111111,999999999).'_'.$_FILES['product_images']['name'][$key];
 						move_uploaded_file($_FILES['product_images']['tmp_name'][$key],PRODUCT_MULTIPLE_IMAGE_SERVER_PATH.$image);
-						imageCompress($_FILES['product_images']['tmp_name'][$key],PRODUCT_MULTIPLE_IMAGE_SERVER_PATH.$image);
+					//	imageCompress($_FILES['product_images']['tmp_name'][$key],PRODUCT_MULTIPLE_IMAGE_SERVER_PATH.$image);
 						mysqli_query($con,"insert into product_images(product_id,product_images) values('$id','$image')");
 					}
 				}
@@ -209,6 +209,7 @@ if(isset($_POST['submit'])){
 				
 				if($attr_id>0){
 					mysqli_query($con,"update product_attributes set size_id='$size_id',color_id='$color_id',mrp='$mrp',price='$price',qty='$qty' where id='$attr_id'");
+					mysqli_query($con,"update product set size_id='$size_id',color_id='$color_id',mrp='$mrp',price='$price',qty='$qty' where id='$attr_id'");
 				}else{
 					mysqli_query($con,"insert into product_attributes(product_id,size_id,color_id,mrp,price,qty) values('$id','$size_id','$color_id','$mrp','$price','$qty')");
 				}
