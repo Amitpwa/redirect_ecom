@@ -14,8 +14,12 @@ if($type=='email'){
 	$otp=rand(1111,9999);
 	$_SESSION['EMAIL_OTP']=$otp;
 	$html="$otp is your otp";
+	if(mail($email,"New OTP", $html)){
+		echo "done";
+	}else{
+		
+	}
 	
-	mail($email,"New OTP", $html);
 
 	// include('smtp/PHPMailerAutoload.php');
 	// $mail=new PHPMailer(true);
