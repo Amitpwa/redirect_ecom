@@ -211,10 +211,10 @@ if(isset($_POST['submit'])){
 				$attr_id=get_safe_value($con,$_POST['attr_id'][$key]);
 				
 				if($attr_id>0){
-					mysqli_query($con,"update product_attributes set size_id='$size_id',color_id='$color_id',mrp='$mrp[$key]',price='$price[$key]',qty='$qty[$key]' where id='$attr_id'");
-					mysqli_query($con,"update product set size_id='$size_id',color_id='$color_id',mrp='$mrp[$key]',price='$price[$key]',qty='$qty[$key]' where id='$attr_id'");
+					mysqli_query($con,"update product_attributes set size_id='$size_id',color_id='$color_id',mrp='$mrp',price='$price',qty='$qty' where id='$attr_id'");
+					mysqli_query($con,"update product set size_id='$size_id',color_id='$color_id',mrp='$mrp',price='$price',qty='$qty' where id='$attr_id'");
 				}else{
-					mysqli_query($con,"insert into product_attributes(product_id,size_id,color_id,mrp,price,qty) values('$id','$size_id','$color_id','$mrp[$key]','$price[$key]','$qty[$key]')");
+					mysqli_query($con,"insert into product_attributes(product_id,size_id,color_id,mrp,price,qty) values('$id','$size_id','$color_id','$mrp','$price','$qty')");
 				}
 			}
 		}
