@@ -15,32 +15,34 @@ if($type=='email'){
 	$_SESSION['EMAIL_OTP']=$otp;
 	$html="$otp is your otp";
 	
-	include('smtp/PHPMailerAutoload.php');
-	$mail=new PHPMailer(true);
-	$mail->isSMTP();
-		$mail->SMTPDebug=3;
+	mail($email,"New OTP", $html);
 
-	$mail->Host="smtp.gmail.com";
-	$mail->Port=587;
-	$mail->SMTPSecure="tls";
-	$mail->SMTPAuth=true;
-	$mail->Username=SMTP_EMAIL;
-	$mail->Password=SMTP_PASSWORD;
-	$mail->SetFrom(SMTP_EMAIL);
-	$mail->addAddress($email);
-	$mail->IsHTML(true);
-	$mail->Subject="New OTP";
-	$mail->Body=$html;
-	$mail->SMTPOptions=array('ssl'=>array(
-		'verify_peer'=>false,
-		'verify_peer_name'=>false,
-		'allow_self_signed'=>false
-	));
-	if($mail->send()){
-		echo "done";
-	}else{
+	// include('smtp/PHPMailerAutoload.php');
+	// $mail=new PHPMailer(true);
+	// $mail->isSMTP();
+	// 	$mail->SMTPDebug=3;
+
+	// $mail->Host="smtp.gmail.com";
+	// $mail->Port=587;
+	// $mail->SMTPSecure="tls";
+	// $mail->SMTPAuth=true;
+	// $mail->Username=SMTP_EMAIL;
+	// $mail->Password=SMTP_PASSWORD;
+	// $mail->SetFrom(SMTP_EMAIL);
+	// $mail->addAddress($email);
+	// $mail->IsHTML(true);
+	// $mail->Subject="New OTP";
+	// $mail->Body=$html;
+	// $mail->SMTPOptions=array('ssl'=>array(
+	// 	'verify_peer'=>false,
+	// 	'verify_peer_name'=>false,
+	// 	'allow_self_signed'=>false
+	// ));
+	// if($mail->send()){
+	// 	echo "done";
+	// }else{
 		
-	}
+	// }
 }
 
 if($type=='mobile'){
