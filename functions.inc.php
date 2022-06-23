@@ -18,7 +18,7 @@ function get_safe_value($con,$str){
 }
 
 function get_product($con,$limit='',$cat_id='',$product_id='',$search_str='',$sort_order='',$is_best_seller='',$sub_categories='',$attr_id=''){
-	$sql="select product.*,categories.categories,product.link,product_attributes.mrp,product_attributes.price,product_attributes.qty from product,categories,product_attributes where product.status=1 and product.id=product_attributes.product_id";
+	$sql="select product.*,categories.categories,product_attributes.mrp,product_attributes.price,product_attributes.qty from product,categories,product_attributes where product.status=1 and product.id=product_attributes.product_id";
 	
 	if($cat_id!=''){
 		$sql.=" and product.categories_id=$cat_id ";
